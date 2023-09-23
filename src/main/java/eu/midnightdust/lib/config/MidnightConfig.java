@@ -321,7 +321,7 @@ public abstract class MidnightConfig {
                         info.index = 0;
                         list.clear();
                         fillList();
-                    })).dimensions(width - 205, 0, 40, 20).texture(new Identifier("midnightlib","icon/reset"), 12, 12).build();
+                    })).dimensions(width - 205, 0, 40, 20).texture(new Identifier("midnightlib","textures/gui/sprites/icon/reset"), 12, 12).build();
 
                     if (info.widget instanceof Map.Entry) {
                         Map.Entry<ButtonWidget.PressAction, Function<Object, Text>> widget = (Map.Entry<ButtonWidget.PressAction, Function<Object, Text>>) info.widget;

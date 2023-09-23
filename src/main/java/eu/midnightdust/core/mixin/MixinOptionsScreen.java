@@ -19,7 +19,7 @@ import java.util.Objects;
 @Mixin(OptionsScreen.class)
 public class MixinOptionsScreen extends Screen {
     @Unique
-    private static final Identifier MIDNIGHTLIB_ICON_TEXTURE = new Identifier("midnightlib","textures/gui/midnightlib_button.png");
+    private static final Identifier MIDNIGHTLIB_ICON_TEXTURE = new Identifier("midnightlib","textures/gui/sprites/icon/midnightlib.png");
     protected MixinOptionsScreen(Text title) {
         super(title);
     }
@@ -29,7 +29,6 @@ public class MixinOptionsScreen extends Screen {
         if (MidnightLibConfig.config_screen_list.equals(MidnightLibConfig.ConfigButton.TRUE) || (MidnightLibConfig.config_screen_list.equals(MidnightLibConfig.ConfigButton.MODMENU) && !PlatformFunctions.isModLoaded("modmenu")))
             this.addDrawableChild(TexturedOverlayButtonWidget.texturedBuilder(Text.translatable("midnightlib.overview.title"), (buttonWidget) -> Objects.requireNonNull(client).setScreen(new MidnightConfigOverviewScreen(this)))
                     .dimensions(this.width / 2 + 158, this.height / 6 - 12, 20, 20)
-                    .vOffset(20)
-                    .texture(MIDNIGHTLIB_ICON_TEXTURE, 32, 64).build());
+                    .texture(MIDNIGHTLIB_ICON_TEXTURE, 16, 16).build());
     }
 }
