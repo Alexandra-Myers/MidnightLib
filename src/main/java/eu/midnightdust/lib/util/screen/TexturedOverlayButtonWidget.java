@@ -15,14 +15,16 @@ import java.util.function.Function;
 public class TexturedOverlayButtonWidget extends TexturedButtonWidget {
     protected int xOverlayOffset;
     protected int yOverlayOffset;
-    protected TexturedOverlayButtonWidget(int x, int y, int width, int height, int u, int v, int hoveredVOffset, Identifier texture, int textureWidth, int textureHeight, PressAction pressAction, Text text, int xOffset, int yOffset) {
+    protected int hoveredVOverlayOffset;
+    protected TexturedOverlayButtonWidget(int x, int y, int width, int height, int u, int v, int hoveredVOffset, int hoveredVOverlayOffset, Identifier texture, int textureWidth, int textureHeight, PressAction pressAction, Text text, int xOffset, int yOffset) {
         super(x, y, width, height, u, v, hoveredVOffset, texture, textureWidth, textureHeight, pressAction, text);
         xOverlayOffset = xOffset;
         yOverlayOffset = yOffset;
+        this.hoveredVOverlayOffset = hoveredVOverlayOffset;
     }
 
     protected TexturedOverlayButtonWidget(Builder buttonBuilder) {
-        this(buttonBuilder.x, buttonBuilder.y, buttonBuilder.width, buttonBuilder.height, buttonBuilder.u, buttonBuilder.v, buttonBuilder.hoveredVOffset, buttonBuilder.texture, buttonBuilder.textureWidth, buttonBuilder.textureHeight, buttonBuilder.onPress, buttonBuilder.message, buttonBuilder.xOverlayOffset, buttonBuilder.yOverlayOffset);
+        this(buttonBuilder.x, buttonBuilder.y, buttonBuilder.width, buttonBuilder.height, buttonBuilder.u, buttonBuilder.v, buttonBuilder.hoveredVOffset, buttonBuilder.hoveredVOverlayOffset, buttonBuilder.texture, buttonBuilder.textureWidth, buttonBuilder.textureHeight, buttonBuilder.onPress, buttonBuilder.message, buttonBuilder.xOverlayOffset, buttonBuilder.yOverlayOffset);
         setTooltip(buttonBuilder.tooltip);
     }
 
@@ -39,8 +41,9 @@ public class TexturedOverlayButtonWidget extends TexturedButtonWidget {
             i += hoveredVOffset;
         }
         context.drawNineSlicedTexture(WIDGETS_TEXTURE, this.getX(), this.getY(), this.width, this.height, 4, 200, 20, 0, i);
-        this.drawTexture(context, this.texture, this.getX() + xOverlayOffset, this.getY() + yOverlayOffset, this.u, this.v, this.hoveredVOffset, this.width - xOverlayOffset * 2, this.height - yOverlayOffset * 2, this.textureWidth, this.textureHeight);
+        this.drawTexture(context, this.texture, this.getX() + xOverlayOffset, this.getY() + yOverlayOffset, this.u, this.v, this.hoveredVOverlayOffset, this.width - xOverlayOffset * 2, this.height - yOverlayOffset * 2, this.textureWidth, this.textureHeight);
     }
+    @SuppressWarnings("unused")
     @OnlyIn(Dist.CLIENT)
     public static class Builder {
         public final Text message;
@@ -57,6 +60,7 @@ public class TexturedOverlayButtonWidget extends TexturedButtonWidget {
         public int u = 0;
         public int v = 0;
         public int hoveredVOffset = 0;
+        public int hoveredVOverlayOffset = 0;
         public int xOverlayOffset = 0;
         public int yOverlayOffset = 0;
         public NarrationSupplier narrationSupplier;
@@ -119,6 +123,11 @@ public class TexturedOverlayButtonWidget extends TexturedButtonWidget {
 
         public Builder vOffset(int hoveredVOffset) {
             this.hoveredVOffset = hoveredVOffset;
+            return this;
+        }
+
+        public Builder vOverlayOffset(int hoveredVOverlayOffset) {
+            this.hoveredVOverlayOffset = hoveredVOverlayOffset;
             return this;
         }
 

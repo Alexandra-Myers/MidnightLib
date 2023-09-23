@@ -323,6 +323,7 @@ public abstract class MidnightConfig {
                         fillList();
                     })).dimensions(width - 205, 0, 40, 20)
                             .texture(new Identifier("midnightlib","textures/gui/sprites/icon/reset.png"), 12, 12)
+                            .vOffset(20)
                             .overlayOffset(14, 4).build();
 
                     if (info.widget instanceof Map.Entry) {

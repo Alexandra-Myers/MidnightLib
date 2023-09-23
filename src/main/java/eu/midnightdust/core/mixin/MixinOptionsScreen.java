@@ -30,6 +30,7 @@ public class MixinOptionsScreen extends Screen {
             this.addDrawableChild(TexturedOverlayButtonWidget.texturedBuilder(Text.translatable("midnightlib.overview.title"), (buttonWidget) -> Objects.requireNonNull(client).setScreen(new MidnightConfigOverviewScreen(this)))
                     .dimensions(this.width / 2 + 158, this.height / 6 - 12, 20, 20)
                     .texture(MIDNIGHTLIB_ICON_TEXTURE, 16, 16)
+                    .vOffset(20)
                     .overlayOffset(2, 2).build());
     }
 }
