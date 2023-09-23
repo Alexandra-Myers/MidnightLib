@@ -29,6 +29,7 @@ public class MixinOptionsScreen extends Screen {
         if (MidnightLibConfig.config_screen_list.equals(MidnightLibConfig.ConfigButton.TRUE) || (MidnightLibConfig.config_screen_list.equals(MidnightLibConfig.ConfigButton.MODMENU) && !PlatformFunctions.isModLoaded("modmenu")))
             this.addDrawableChild(TexturedOverlayButtonWidget.texturedBuilder(Text.translatable("midnightlib.overview.title"), (buttonWidget) -> Objects.requireNonNull(client).setScreen(new MidnightConfigOverviewScreen(this)))
                     .dimensions(this.width / 2 + 158, this.height / 6 - 12, 20, 20)
-                    .texture(MIDNIGHTLIB_ICON_TEXTURE, 16, 16).build());
+                    .texture(MIDNIGHTLIB_ICON_TEXTURE, 16, 16)
+                    .overlayOffset(2, 2).build());
     }
 }
