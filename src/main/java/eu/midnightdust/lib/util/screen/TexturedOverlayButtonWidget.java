@@ -36,7 +36,7 @@ public class TexturedOverlayButtonWidget extends TexturedButtonWidget {
     public void renderButton(DrawContext context, int mouseX, int mouseY, float delta) {
         int i = 66;
         if (!this.isNarratable()) {
-            i += hoveredVOffset * 2;
+            i -= hoveredVOffset;
         } else if (this.isSelected()) {
             i += hoveredVOffset;
         }
